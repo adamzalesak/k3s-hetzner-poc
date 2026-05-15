@@ -1,0 +1,15 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# Secrets / credentials
+.envrc
+*.tfvars
+!*.tfvars.example
+kubeconfig
+*.pem
+# OS / editor
+.DS_Store
