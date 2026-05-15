@@ -24,3 +24,9 @@ variable "ssh_public_key_path" {
   type        = string
   default     = "keys/admin.pub"
 }
+
+variable "control_plane_count" {
+  description = "Number of control plane nodes"
+  type        = number
+  default     = 1
+}
