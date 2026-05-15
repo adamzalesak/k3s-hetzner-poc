@@ -12,3 +12,15 @@ variable "admin_cidr" {
     error_message = "The admin_cidr variable must be a valid CIDR block (e.g., 192.168.1.0/24)"
   }
 }
+
+variable "cluster_name" {
+  description = "Name prefix for all Hetzner resources in this cluster"
+  type        = string
+  default     = "k8s-poc"
+}
+
+variable "ssh_public_key_path" {
+  description = "Path to the committed SSH public key, relative to the infra module"
+  type        = string
+  default     = "keys/admin.pub"
+}
