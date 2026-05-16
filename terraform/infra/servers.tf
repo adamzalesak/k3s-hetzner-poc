@@ -11,6 +11,9 @@ resource "hcloud_server" "control_plane" {
   location     = "fsn1"
   ssh_keys     = [hcloud_ssh_key.admin.id]
   firewall_ids = [hcloud_firewall.firewall.id]
+  user_data = templatefile("${path.module}/cloud-init/control-plane.yaml.tftpl", {
+    k3s_token = random_password.k3s_token.result
+  })
 }
 
 resource "hcloud_server_network" "control_plane_network" {
