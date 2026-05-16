@@ -30,3 +30,9 @@ variable "control_plane_count" {
   type        = number
   default     = 1
 }
+
+variable "agent_count" {
+  description = "Number of agent nodes"
+  type        = number
+  default     = 2
+}
