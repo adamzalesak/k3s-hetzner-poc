@@ -6,7 +6,7 @@ resource "random_password" "k3s_token" {
 resource "hcloud_server" "control_plane" {
   count        = var.control_plane_count
   name         = "${var.cluster_name}-control-plane-${count.index + 1}"
-  server_type  = "cx22"
+  server_type  = "cx23"
   image        = "ubuntu-24.04"
   location     = "fsn1"
   ssh_keys     = [hcloud_ssh_key.admin.id]
@@ -27,7 +27,7 @@ resource "hcloud_server_network" "control_plane_network" {
 resource "hcloud_server" "agent" {
   count        = var.agent_count
   name         = "${var.cluster_name}-agent-${count.index + 1}"
-  server_type  = "cx22"
+  server_type  = "cx23"
   image        = "ubuntu-24.04"
   location     = "fsn1"
   ssh_keys     = [hcloud_ssh_key.admin.id]

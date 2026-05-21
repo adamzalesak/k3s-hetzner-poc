@@ -1,5 +1,21 @@
 #cloud-config
 package_update: true
 
+write_files:
+  - path: /etc/netplan/60-private.yaml
+    permissions: '0600'
+    content: |
+      network:
+        version: 2
+        ethernets:
+          private:
+            match:
+              name: "en*"
+            dhcp4: true
+            optional: true
+
 runcmd:
+  - netplan apply
+  - until ip -4 -br addr show | grep -E '^en.*UP.*10\.' > /dev/null; do echo "waiting for private NIC..."; sleep 5; done
+  - until curl -sk -o /dev/null --connect-timeout 5 https://${control_plane_ip}:6443; do echo "waiting for control-plane API..."; sleep 5; done
   - curl -sfL https://get.k3s.io | K3S_TOKEN="${k3s_token}" K3S_URL="https://${control_plane_ip}:6443" sh -s - agent
