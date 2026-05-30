@@ -12,5 +12,5 @@ ingress:
   enabled: true
   className: traefik
   host: demo.178.105.204.44.sslip.io
-  clusterIssuer: letsencrypt-staging
-  tlsSecretName: demo-app-tls
+  clusterIssuer: letsencrypt-prod
+  tlsSecretName: demo-app-tls-prod
