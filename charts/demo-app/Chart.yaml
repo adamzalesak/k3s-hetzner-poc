@@ -1,0 +1,6 @@
+apiVersion: v2
+name: demo-app
+description: Minimal nginx-based demo app for the k3s-hetzner-poc cluster
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

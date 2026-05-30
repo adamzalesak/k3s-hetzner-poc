@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-app-html
+  labels:
+    app: demo-app
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>k8s-poc demo</title>
+      <style>
+        body { font-family: system-ui, -apple-system, sans-serif; max-width: 640px; margin: 4em auto; padding: 2em; line-height: 1.6; color: #1f2937; }
+        h1 { color: #2563eb; margin-bottom: 0.5em; }
+        code { background: #f3f4f6; padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.95em; }
+        ul { padding-left: 1.2em; }
+        li { margin-bottom: 0.3em; }
+      </style>
+    </head>
+    <body>
+      <h1>👋 Hello from k8s-poc</h1>
+      <p>This page is served from a Helm chart deployed to a multi-node k3s cluster on Hetzner Cloud, reconciled by ArgoCD via GitOps.</p>
+      <ul>
+        <li>Infra provisioned by <code>terraform/infra</code></li>
+        <li>ArgoCD installed by <code>terraform/cluster-bootstrap</code></li>
+        <li>App + cert-manager + ClusterIssuer managed by ArgoCD via <code>gitops/</code></li>
+        <li>TLS certificate issued by <code>cert-manager</code> + Let's Encrypt (staging)</li>
+      </ul>
+    </body>
+    </html>
