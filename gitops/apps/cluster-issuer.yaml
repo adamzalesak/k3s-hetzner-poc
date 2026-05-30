@@ -13,8 +13,6 @@ spec:
     repoURL: https://github.com/adamzalesak/k3s-hetzner-poc.git
     targetRevision: HEAD
     path: gitops/manifests/cluster-issuers
-    directory:
-      recurse: false
   destination:
     server: https://kubernetes.default.svc
     namespace: cert-manager
